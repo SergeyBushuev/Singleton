@@ -1,1 +1,1 @@
-# Singltone
+# Singleton
