@@ -2,16 +2,16 @@
 class singleton
 {
    public:
-       static singleton* getInstance(){
-         if (!instance){
-            instance = new singleton();
-            return instance;
-         }
-       }
+       static const singleton& Instance()
+        {
+                static singleton SingleInstance;
+                return SingleInstance;
+        }
+       singleton(const singleton&) = delete;             //Не должен вызываться
+       singleton& operator=(const singleton&) = delete;  //Не должен вызываться
        ~singleton();
    private:
-       singleton() {};
-       singleton(const singleton&);  
-       singleton& operator=(singleton&);
-       static singleton* instance;
+       singleton() {
+       //Конструктор. Объявлен как private для избежания вызова за пределами класса
+       }
 };
